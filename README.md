@@ -78,9 +78,26 @@ General clean-up following <a href="http://programmer.97things.oreilly.com/wiki/
 
 I deleted some not-used images.
 
+## Services
+
+I added two services, one for basically storing some "currenUser" data, which could be populated by other services (login) and a fake id generator that is used in adding some bogus ids to newly created comments.
+
+## Body/message parsing
+
+The created chatterfeedbody directive goes beyond simply echoing the <strong>feeditem.body.text</strong>, and parses the actual <strong>feeditem.body.messageSegments</strong> and creates inline anchors in the content.
+
+It is re-used in both the chatterfeed and the chatterfeedcomment directives - one, centralized body parser.
+
 ## CSS and images
 
 All sprites and CSS where downloaded from and property of salesforce.com, except styles.css and normalize.css
 As mentioned before, the approach is based on the most seamless integration with the existing feed reader.
 
+## Level of supporting original chatter feed actions/features
 
+The application includes:
+* creating/deleting a feed.item comment
+* bookmarking a feed.item
+* deleting a feed.item
+* like/unlike a feed.item/comment
+* visualize attachments
