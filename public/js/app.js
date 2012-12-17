@@ -2,7 +2,7 @@
 
 /* App Module */
 
-angular.module('phonecat',['chatterfeed','chatteruser']).
+angular.module('chatter',['chatterfeed','chatteruser']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/feeds', {templateUrl: 'partials/feeds.html',controller: FeedsCtrl}).
@@ -12,6 +12,6 @@ angular.module('phonecat',['chatterfeed','chatteruser']).
       when('/share', {templateUrl: 'partials/share.html', controller: CommonCtrllerForSecondaryPage}).  
       when('/updatephoto', {templateUrl: 'partials/updatephoto.html', controller: CommonCtrllerForSecondaryPage}).  
       when('/userprofile', {templateUrl: 'partials/userprofile.html', controller: CommonCtrllerForSecondaryPage}).  
-/**/
+
       otherwise({redirectTo: '/feeds'});
 }]);
