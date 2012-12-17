@@ -1,0 +1,41 @@
+<table class="contentPost">
+	<tbody>
+		<tr>
+			<td class="thumbnailCell" data-ng-show="attachment.hasImagePreview" data-ng-init="hoverStyle={display:'none'};" data-ng-mouseenter="hoverStyle={display:'block'};console.log('enter');" data-ng-mouseleave="hoverStyle={display:'none'};console.log('leave');">
+				<a href="" class="contentThumbnail-a" style="width: 65px; height: 70px;">
+					<img src="https://c.na11.content.force.com/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB120BY90&amp;versionId=068G0000000BnCb&amp;operationContext=CHATTER" alt="Click to preview" class="contentThumbnail" title="Click to preview">
+					<div class="previewHover" title="Click to preview" style="width: 60px; height: 58px; position: relative; left: 0px; top: -66px;" data-ng-style="hoverStyle"></div>
+				</a>
+			</td>
+			<td class="rightSideCell">
+				<table class="contentdetails">
+					<tbody>
+						<tr>
+							<td>
+								<div class="contentFileTitle">
+									<a href="/{{attachment.id}}" class="contentActionLink">
+										<span class="contentTitleLink" title="{{attachment.title}}">{{attachment.title}}</span>
+									</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="moreFileActions-td">
+								<a href="{{attachment.downloadUrl}}" class="contentActionLink">
+									<img src="/img/s.gif" alt="" width="1" height="1" class="chatterFileIcon downloadItemIcon">
+									<span class="contentActionLabel">Download {{filetype}}</span>
+									<span class="contentActionLabel fileSize">({{(attachment.fileSize/1024).toFixed(2)}}&nbsp;KB)</span>
+								</a>
+								<span class="feeditemseparatingdot">·</span>
+								<a href="" class="more-file-actions" title="Open More Actions list">
+									<span class="contentActionLabel">More Actions</span>
+									<img src="/img/s.gif" alt="" class="content-action-link-arrow" title="">
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>

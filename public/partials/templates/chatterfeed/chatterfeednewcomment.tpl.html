@@ -1,0 +1,30 @@
+<div data-ng-switch="placeholder">
+	<!-- real input -->
+	<div data-ng-switch-when="false" class="feeditemcomment feeditemcommenttext">
+		<div class="feeditemcommentphotocontainer">
+			<a href="{{feed.actor.url}}" class="feeditemcommentphoto">
+				<img src="img/t.png" title="{{feed.actor.name}}" alt="{{feed.actor.name}}">
+			</a>
+		</div>
+		<div class="feeditemcommentnew  zen">
+			<div class="newcommenttextwrapper">
+				<textarea class="foobar chatterMentionsEnabled chatterHashtagsEnabled" tabindex="0" role="textbox" title="Write a comment..." data-ng-model="comment"></textarea>
+			</div>
+			<div class="chattermessagecontainer" style="display:none"></div>
+			<input class="zen-btn newcommentbutton" type="button" value="Comment" title="Comment" data-ng-click="pushComment(comment); comment='';">
+			<div>
+				<a href class="cxcontentcommentaction">
+					<img class="cxcontentcommentactionimg" src="img/s.gif">
+					<span class="cxcontentcommentactiontext">Attach File</span>
+				</a>
+			</div>
+			<div class="cxcontentcommentinfo"></div>
+			<div class="feedclearfloat"></div>
+		</div>
+	</div>
+	<!-- temporary placeholder -->
+	<div data-ng-switch-when="true" style="display:block" class="feeditemcommentplaceholder cxcommentplaceholder">
+    	<input type="text" readonly="true" value="Write a comment..." class="cxcommentplaceholderaction"
+    		data-ng-click="hidePlaceholder()">
+	</div>
+</div>

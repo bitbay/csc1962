@@ -1,0 +1,52 @@
+<div class="feeditemcomment" data-ng-mouseover="hoverItem(true);" data-ng-mouseout="hoverItem(false);">
+	<!-- USER AVATAR -->
+	<a class="feeditemcommentphoto">
+		<span class="chatter-avatarMedium chatter-avatar">
+			<!-- TODO: change to src="{{comment.user.photo.smallPhotoUrl}}" -->
+			<img ng-click="setRoute('userprofile')" src="img/t.png" width="30" height="30" class="chatter-photo"/>
+		</span>
+	</a>
+	
+	<!-- COMMENT BODY -->
+	<div class="feeditemcommentbody">
+		<!-- USER -->
+		<div class="feedcommentuser">
+			<a href="{{comment.user.url}}" class="actorentitylink">{{comment.user.name}}</a>
+		</div>
+		
+		<!-- COMMENT -->
+		<div data-chatterfeedbody data-feed="comment" data-class="feeditemcommenttext"></div>
+		
+		<!-- ATTACHMENT -->
+		<span data-ng-show="comment.attachment!=null">
+			<table data-chatterfeedattachment="comment.attachment"></table>
+		</span>
+		
+		<!-- FOOTER -->
+		<div class="feedcommentfooter">
+			<!-- actions -->
+			<span class="feedcommentactions">
+				<!-- action LIKE -->
+				<ng-switch data-on="comment.myLike!=null">
+					<a data-ng-switch-when="false" href="#" data-ng-click="currentUserLikes(true);">
+						<span>Like</span>
+					</a>
+					<a data-ng-switch-when="true" href="#" data-ng-click="currentUserLikes(false);">
+						<span>Unlike</span>
+					</a>
+				</ng-switch>
+				<span class="commentlike" data-ng-show="comment.likes.total>0">
+					<span class="feeditemseparatingdot cxcommentlikedot"> · </span>
+					<span class="small-like-icon"></span>
+					<span class="liketext" title="You like this.">
+						<a href>1 person</a>
+					</span>
+				</span>
+				
+				<!-- action DELETE -->
+				<a href="#" data-ng-click="deleteItem($event);" title="Delete this comment" class="feeditemactionlink commentDeleteLink">Delete</a>
+			</span>
+			<span class="feeditemtimestamp">{{comment.createdDate}}</span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,84 @@
+<li class="feeditem" data-ng-mouseover="hoverItem(true);" data-ng-mouseout="hoverItem(false);">
+	<!-- ITEM AVATAR -->
+	<span>
+		<a href="">
+			<span class="chatter-avatar feeditemusericon chatter-avatarRegular">
+				<img src="img/t.png" ng-click="setRoute('userprofile')" width="45" height="45" class="chatter-photo"/>
+				<!-- TODO: use this in production-like environment with access to real fetched data -->
+				<!--img src data-ng-src="{{feed.actor.photo.smallPhotoUrl}}" width="45" height="45" class="chatter-photo"/-->
+			</span>
+		</a>
+	</span>
+	
+	<!-- ITEM CONTENT -->
+	<div class="feeditemcontent">
+		<div class="feeditembodyandfooter">
+		
+			<!-- custom directive ITEM BODY -->
+			<div class="feeditembody">
+				<div data-chatterfeedbody data-feed="feed" data-class="feeditembody"></div>
+			</div>
+			
+			<!-- ITEM FOOTER -->
+			<div class="feeditemfooter">
+				<!-- actions -->
+				<span class="feedactions">
+					<!-- action COMMENT -->
+					<a href data-ng-click="startComment()">
+						<span>Comment</span>
+					</a>
+					<span class="feeditemseparatingdot"> · </span>
+					
+					<!-- action LIKE -->
+					<ng-switch data-on="feed.isLikedByCurrentUser">
+						<a data-ng-switch-when="false" href="#" data-ng-click="currentUserLikes($event);">
+							<span>Like</span>
+						</a>
+						<a data-ng-switch-when="true" href="#" data-ng-click="currentUserLikes($event);">
+							<span>Unlike</span>
+						</a>
+					</ng-switch>
+					<span class="feeditemseparatingdot" data-ng-hide="hiddenShare"> · </span>
+					<a href="#share?title={{comment.body.text}}" data-ng-hide="hiddenShare">
+						<span>Share</span>
+					</a>
+					
+					<!-- action BOOKMARK -->
+					<ng-switch data-on="feed.isBookmarkedByCurrentUser">
+						<a data-ng-switch-when="false" href="#" title="Bookmark this post" class="feeditemactionlink bookmarkLink"
+						data-ng-click="currentUserBookmark($event);">Bookmark</a>
+						<a data-ng-switch-when="true" href="#" title="Remove this bookmark" class="feeditemactionlink unbookmarkLink"
+						data-ng-click="currentUserBookmark($event);">Unbookmark</a>
+					</ng-switch>
+					
+					<!-- action DELETE -->
+					<a href="#" data-ng-click="deleteItem($event);" title="Delete this post" class="feeditemactionlink feedDeleteLink">Delete</a>
+				</span>
+				<span class="feeditemseparatingdot"> · </span>
+				<a href="" class="feeditemtimestamp">{{feed.createdDate}}</a>
+			</div>
+		</div>
+		
+		<!-- ITEM EXTRAS (comments) -->
+		<div class="feeditemextras chattertextareacontainer" data-ng-show="feed.comments.total != 0 || feed.isLikedByCurrentUser || commentOn ">
+			<div class="feedcommentarrow"></div>
+			<ul class="feeditemcomments">
+				<!-- ITEM LIKE -->
+				<li class="feeditemlike" data-ng-show="feed.isLikedByCurrentUser">
+					<span class="like-icon">&nbsp;</span>
+					<span>You like this.</span>
+				</li>
+				
+				<!-- custom directive FEED-COMMENT -->
+				<li ng-repeat="comment in feed.comments.comments">
+					<div data-chatterfeedcomment="comment" data-likes="feed.likes"></div>
+				</li>
+				
+				<!-- custom directive FEED-NEW-COMMENT -->
+				<li data-ng-show="commentOn">
+					<span data-chatterfeednewcomment data-feed="feed" data-comments="feed.comments" data-commentOn="commentOn"></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</li>

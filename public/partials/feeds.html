@@ -1,0 +1,64 @@
+<div class="userProfilePage">
+	<div class="userprofilepage">
+		<div class="userProfileContainer">
+		
+			<!-- FAKE PAGE HEADER -->
+			<div class="profileHeaderContent">
+				<div class="chatterBreadcrumbs" role="navigation" id="ext-gen14">
+					<span id="headBreadcrumbNode">
+						<a href="#">Chatter</a>
+					</span>
+					<img src="/img/s.gif" alt="" width="1" height="1" class="breadcrumbSeparator breadcrumbSeparatorLtr" title="">
+					<span id="interiorBreadcrumbNode0">
+						<a href="#">People</a>
+					</span>
+					<img src="/img/s.gif" alt="" width="1" height="1" class="breadcrumbSeparator breadcrumbSeparatorLtr" title="">
+					<span class="tailNode cxTailNode" id="tailBreadcrumbNode">
+						{{currentUser.name}}
+					</span>
+				</div>
+				<div class="profileHeaderLinks">
+    				<a href="#" title="Help for this Page" class="helpLinkElement">
+    					<span class="configLinks helpLink">Help for this Page</span>
+        				<img title="Help" alt="Help" class="helpIcon" src="/img/s.gif">
+					</a>		
+					<span class="separator">&nbsp;|&nbsp;</span>
+					<div class="manageUser">
+						<a href="{{currentUser.url}}" id="USER_DETAIL" title="User Detail">
+							<span>User Detail</span>
+						</a>
+					</div>
+				</div> 
+            </div>
+			
+			<!-- LEFT COLUMN -->
+            <div class="leftContent">
+            	<div id="photoSection" class="photoSection  hasPhotoLinks">
+    				<span class="chatter-avatar chatter-avatarFull profileImage"><img src="img/f.png" alt="{{currentUser.name}}" class="chatter-photo" title="{{currentUser.name}}"><img src="/img/s.gif" alt="" width="12" height="1" class="chatter-avatarStyle" style="margin-right: 0.25em;" title=""></span>
+		    		<div class="photoUploadSection" style="display:block;">
+						<a ng-click="setRoute('updatephoto')" id="uploadLink">Add Photo</a>
+		    		</div>
+				</div>
+			</div>
+			
+			<!-- MAIN CONTENT -->
+			<div class="mainContent">
+				<div class="lowerMainContent">
+					<div class="centerContent" id="centerContent">
+						<div class="lowerCenterContent">
+							<div class="profileSection">
+								<div id="newfeed">
+									<ul class="feedcontainer actionsOnHoverEnabled">
+										<!-- THE ACTUAL FEED ITEMS -->
+										<li ng-repeat="item in feeds" data-chatterfeed="item"/>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
